@@ -1,0 +1,13 @@
+# DNF YOLOv11 脚本依赖
+# 基础
+torch>=1.8.0
+torchvision>=0.9.0
+ultralytics>=8.3.0
+opencv-python>=4.5.0
+numpy>=1.20.0
+pyyaml
+
+# 仅 Windows 需要（截屏 + 键鼠模拟）
+pywin32
+pyautogui
+pydirectinput

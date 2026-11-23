@@ -1,0 +1,9 @@
+hero
+small_map
+monster
+money
+material
+door
+BOSS
+box
+options

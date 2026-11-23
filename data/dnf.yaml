@@ -1,0 +1,30 @@
+# DNF 目标检测数据集配置（YOLOv11 / ultralytics 训练用）
+#
+# 数据集目录结构（YOLO 格式）：
+#   datasets/dnf/
+#     ├── images/
+#     │   ├── train/*.jpg
+#     │   └── val/*.jpg
+#     ├── labels/
+#     │   ├── train/*.txt   # 每行: class_id cx cy w h (归一化)
+#     │   └── val/*.txt
+#     └── (本文件可放任意位置，训练时用 data 参数指向它)
+#
+# 如果你已有数据集，把 path 改成你的实际根目录即可。
+
+path: datasets/dnf          # 数据集根目录（相对项目根）
+train: images/train         # 训练集图片（相对 path）
+val: images/val             # 验证集图片（相对 path）
+
+# 类别数（沿用原项目 9 类）
+nc: 9
+names:
+  0: hero       # 人物
+  1: small_map  # 小地图
+  2: monster    # 怪物
+  3: money      # 金币
+  4: material   # 材料
+  5: door       # 门
+  6: BOSS       # 首领
+  7: box        # 箱子
+  8: options    # 结算选项
