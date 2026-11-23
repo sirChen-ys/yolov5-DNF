@@ -10,6 +10,16 @@ import win32con
 import win32gui
 import win32ui
 
+# 必须在任何 GetDC / GetSystemMetrics 之前打开 DPI 感知，
+# 否则在开了缩放的显示器上抓到的是缩小后的画面（见 game_window.py 说明）。
+try:
+    from game_window import enable_dpi_awareness
+except ImportError:  # 单独把 grabscreen.py 拷到别处用时的兜底
+    enable_dpi_awareness = None
+
+if enable_dpi_awareness is not None:
+    enable_dpi_awareness()
+
 
 def grab_screen(region=None):
 
@@ -34,7 +44,8 @@ def grab_screen(region=None):
     memdc.BitBlt((0, 0), (width, height), srcdc, (left, top), win32con.SRCCOPY)
     
     signedIntsArray = bmp.GetBitmapBits(True)
-    img = np.fromstring(signedIntsArray, dtype='uint8')
+    # NumPy 2.x 移除了 fromstring 的二进制模式，这里用 frombuffer 等价替代
+    img = np.frombuffer(signedIntsArray, dtype='uint8')
     img.shape = (height,width,4)
 
     srcdc.DeleteDC()

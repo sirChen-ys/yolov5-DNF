@@ -1,3 +1,16 @@
+﻿# -*- coding: utf-8 -*-
+# ==============================================================================
+# [已废弃 / DEPRECATED] 请勿用于新的标注流程
+#
+# 本脚本是 labelme JSON -> YOLO txt 的早期单文件实现，功能已被
+# prepare_dataset.py 整合（而 prepare_dataset.py 本身也已废弃）。
+#
+# 当前标注流程：Label Studio 标注 -> E:\Work\LabelStudio\export-yolo.ps1 导出
+# 类别顺序统一由 D:\Project\yolov5-DNF\data\dnf.yaml 的 names 决定。
+#
+# 仅当需要转换历史 labelme 数据时才可能用到本脚本。
+# ==============================================================================
+
 
 import json
 import os
